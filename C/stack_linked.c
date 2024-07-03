@@ -30,13 +30,20 @@ void push(int a)
 
 void pop()
 {
-    struct node* ptr = start , * save;
+    struct node* ptr = start;
+	struct node* save = NULL; 
     while(ptr -> next != NULL){
 	save = ptr;
 	ptr = ptr -> next;
     }
 
-    save -> next = NULL;
+    if (save == NULL) {
+        start = NULL;
+    } else {
+        save->next = NULL;
+    }
+
+	free(ptr);
 }
 
 void print()

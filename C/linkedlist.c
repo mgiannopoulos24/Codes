@@ -12,7 +12,7 @@ void insert(){
 	struct node *new , *ptr;
 	int a;
 
-	new = (struct new *) malloc (sizeof(struct node));
+	new = (struct node *) malloc (sizeof(struct node));
 
 		printf("Enter the value to be Inserted : ");
 		scanf("%d" , &a);
@@ -39,12 +39,12 @@ void insert(){
 	}
 }
 
-insert_beg(){
+void insert_beg(){
 
 	struct node *new , *temp;
 	int a;
 
-	new = (struct new *) malloc (sizeof(struct node));
+	new = (struct node *) malloc (sizeof(struct node));
 
 	printf("Enter the value to be Inserted at the Beginning : ");
 	scanf("%d" , &a);
@@ -77,7 +77,7 @@ void insert_btw(){
 	printf("Enter the value to be Inserted : ");
 	scanf("%d" , &a);
 
-	new = (struct new *) malloc (sizeof(struct node));
+	new = (struct node *) malloc (sizeof(struct node));
 
 	new -> val = a;
 	new -> link = NULL;
@@ -125,6 +125,12 @@ void delete_last(){
 
 	struct node *ptr , *temp;
 
+    if (start->link == NULL) {
+        free(start);
+        start = NULL;
+        return;
+    }
+
 	ptr = start;
 
 	while(ptr -> link != NULL){
@@ -148,6 +154,11 @@ void delete_btw(){
 
 	printf("Enter the position where you want to delete the node : ");
 	scanf("%d" , &p);
+
+	if (p == 1) {
+        delete_beg();
+        return;
+    }
 
 	ptr = start;
 

@@ -3,13 +3,12 @@
 
 int shift(int x , int n)
 {
-    x = x >> n;
-    x = x & ~(((1 << 31) >> n) << 1);
-    return x;
+    unsigned int mask = ~0U >> n;  // Create a mask of 1's with n trailing 0's
+    return (x >> n) & mask;
 }
 	
 
-void main(int agrc , char* argv[])
+void main(int argc , char* argv[])
 {
 
     int x , n;
